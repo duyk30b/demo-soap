@@ -1,42 +1,68 @@
-<definitions name = "MyService"
-             targetNamespace = "http://www.examples.com/wsdl/MyService.wsdl"
+<definitions name = "BookService"
+             targetNamespace = "http://www.examples.com/wsdl/BookService.wsdl"
              xmlns = "http://schemas.xmlsoap.org/wsdl/"
              xmlns:soap = "http://schemas.xmlsoap.org/wsdl/soap/"
-             xmlns:tns = "http://www.examples.com/wsdl/MyService.wsdl"
+             xmlns:tns = "http://www.examples.com/wsdl/BookService.wsdl"
              xmlns:xsd = "http://www.w3.org/2001/XMLSchema">
-    <message name="MyFunctionRequest">
+    <message name="BookListRequest">
         <part name="productCode" type="xsd:string"/>
         <part name="productName" type="xsd:string"/>
         <part name="timestamp" type="xsd:long"/>
     </message>
-    <message name="MyFunctionResponse">
+    <message name="BookListResponse">
         <part name="status" type="xsd:string"/>
         <part name="message" type="xsd:string"/>
     </message>
-    <portType name="MyPort">
-        <operation name="MyFunction">
-            <input message="tns:MyFunctionRequest"/>
-            <output message="tns:MyFunctionResponse"/>
+
+    <message name="BookCreateRequest">
+        <part name="productCode" type="xsd:string"/>
+        <part name="productName" type="xsd:string"/>
+        <part name="timestamp" type="xsd:long"/>
+    </message>
+    <message name="BookCreateResponse">
+        <part name="status" type="xsd:string"/>
+        <part name="message" type="xsd:string"/>
+    </message>
+
+    <portType name="BookPort">
+        <operation name="BookList">
+            <input message="tns:BookListRequest"/>
+            <output message="tns:BookListResponse"/>
+        </operation>
+        <operation name="BookCreate">
+            <input message="tns:BookCreateRequest"/>
+            <output message="tns:BookCreateResponse"/>
         </operation>
     </portType>
-    <binding name = "MyFunction_Binding" type="tns:MyPort">
+    <binding name = "BookServiceBinding" type="tns:BookPort">
         <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
-        <operation name="MyFunction">
-            <soap:operation soapAction="MyFunction"/>
+        <operation name="BookList">
+            <soap:operation soapAction="BookList"/>
             <input>
                 <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" 
-                    namespace="urn:examples:MyService" use="encoded"/>
+                    namespace="urn:examples:BookService" use="encoded"/>
             </input>
             <output>
                 <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" 
-                    namespace="urn:examples:MyService" use="encoded"/>
+                    namespace="urn:examples:BookService" use="encoded"/>
+            </output>
+        </operation>
+        <operation name="BookCreate">
+            <soap:operation soapAction="BookCreate"/>
+            <input>
+                <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" 
+                    namespace="urn:examples:BookService" use="encoded"/>
+            </input>
+            <output>
+                <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" 
+                    namespace="urn:examples:BookService" use="encoded"/>
             </output>
         </operation>
     </binding>
-    <service name="MyService">
-        <documentation>WSDL File for MyService</documentation>
-        <port binding="tns:MyFunction_Binding" name="MyPort">
-            <soap:address location = "http://localhost:8001/MyFunction/" />
+    <service name="BookService">
+        <documentation>WSDL File for BookService</documentation>
+        <port binding="tns:BookServiceBinding" name="BookPort">
+            <soap:address location = "http://localhost:8001/BookFunction/" />
         </port>
     </service>
 </definitions>

@@ -3,21 +3,21 @@ const express = require('express')
 const app = express()
 
 const start = async () => {
-    var url = 'http://localhost:8001/BookFunction?wsdl';
+    var url = 'http://sap.com/xi/A1S/Global/ManagePurchaseRequestIn/MaintainBundleRequest';
 
-    const security = new soap.BasicAuthSecurity('username', 'password');
+    const security = new soap.BasicAuthSecurity('_TEST_USER', 'Welcome1');
     const wsdl_headers = {}, wsdl_options = {};
     security.addHeaders(wsdl_headers);
     security.addOptions(wsdl_options);
 
     const clientSoap = await soap.createClientAsync(url, { wsdl_headers, wsdl_options })
-    console.log(JSON.stringify(clientSoap.describe(), null, 2));
+    // console.log(JSON.stringify(clientSoap.describe(), null, 2));
 
-    clientSoap.addSoapHeader({
-        'x-auth': 'demoUser'
-    });
+    // clientSoap.addSoapHeader({
+    //     'x-auth': 'demoUser'
+    // });
 
-    clientSoap.setSecurity(security);
+    // clientSoap.setSecurity(security);
     // clientSoap.setSecurity(new soap.BearerSecurity('token'));
 
     app.get('/test-normal', (req, res) => {

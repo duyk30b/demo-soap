@@ -55,6 +55,12 @@ app.listen(8001, function () {
         console.log('🚀 ~ server.on header ~ methodName:', methodName)
         console.log('🚀 ~ server.on header ~ headers:', headers)
     })
+
+    server.authenticate = function (security, callback) {
+        console.log('🚀 ~ file: server.js:60 ~ security:', security)
+        callback(true)
+    };
+
     server.log = function (type, data) {
         // console.log('🚀 ~ server.js:64 ~ {type: data}:', { [type]: data })
     };

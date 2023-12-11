@@ -1,0 +1,6 @@
+I. Run server:  npm run server
+- Server SOAP run in port: 8001
+
+II. Run Client: npm run client
+- Server CLIENT run in port: 8002
+- Tại server client, thử connect với server SOAP bằng URL: http://localhost:8002/test-normal

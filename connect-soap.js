@@ -3,7 +3,11 @@ const express = require('express')
 const app = express()
 
 const start = async () => {
-    var url = 'http://sap.com/xi/A1S/Global/ManagePurchaseRequestIn/MaintainBundleRequest';
+    // let url = 'http://sap.com/xi/A1S/Global/ManagePurchaseRequestIn/MaintainBundleRequest';
+    // let url = 'http://www.sap.com/webas/710/soap/features/transportbinding';
+    // let url = 'https://my350617.sapbydesign.com/sap/bc/srt/scs/sap/managepurchaserequestin';
+    // let url = 'https://my350617.sapbydesign.com/sap/bc/srt/scs/sap/managepurchaserequestin?sap-vhost=my350617.sapbydesign.com';
+    const url = './soap-demo.wsdl'
 
     const security = new soap.BasicAuthSecurity('_TEST_USER', 'Welcome1');
     const wsdl_headers = {}, wsdl_options = {};

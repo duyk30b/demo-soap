@@ -34,7 +34,7 @@
             <output message="tns:BookCreateResponse"/>
         </operation>
     </portType>
-    <binding name = "BookServiceBinding" type="tns:BookPort">
+    <binding name="BookServiceBinding" type="tns:BookPort">
         <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
         <operation name="BookList">
             <soap:operation soapAction="BookList"/>

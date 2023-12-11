@@ -4,3 +4,6 @@ I. Run server:  npm run server
 II. Run Client: npm run client
 - Server CLIENT run in port: 8002
 - Tại server client, thử connect với server SOAP bằng URL: http://localhost:8002/test-normal
+
+III. Demo connect ODATA
+- ./src/odata-client.service.ts
